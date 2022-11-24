@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+tr.headline01 {	
+	height: 50px;
+	background-color: #06283D;
+}
+
+tr.headline02 {
+	height: 30px;	
+}
+
+td.menu01 {
+	padding: 5px;
+	font-size: 20px;
+	color: #DFF6FF;
+	font-family: Arial;
+	text-align: center;
+}
+
+

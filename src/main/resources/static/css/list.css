@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+tr.listbox01 td{
+	text-align: center;
+	border-top: 2px solid #256D85;
+	border-bottom: 2px solid #256D85;
+	border-radius: 10px;
+	background-color: #256D85;
+}
+
+span.content_text02 {
+	font-family: malgun;
+	font-size: 20px;
+	font-weight: bold;
+	color: #ffffff;	
+}
+
+tr.listbox02 td{
+	border-bottom: 2px solid #256D85;
+}
+
+tr.listbox02{
+	text-align: center;
+}
+
+input.button_type02 {
+	background-color: #84ddff;
+	border: 2px solid #ffffff;
+	width: 188px;
+	height: 40px;
+	font-family: malgun;
+	font-size: 20px;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 5px;
+	float: right;
+	margin-right:113px;
+	margin-top:10px;
+}
+

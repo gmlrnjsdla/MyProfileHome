@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+tr.contentbox {
+	height: 545px;
+	background-color: #DFF6FF;
+}
+
+td.content {
+	font-family: malgun;
+	font-size: 20px;
+	font-weight: bold;
+	color: #5f5f5f;
+	text-align: center;
+}
+
+span.content_text01 {
+	font-family: malgun;
+	font-size: 20px;
+	font-weight: bold;
+	color: #6c6c6c;	
+}
+
+input.input_type01 {
+	background-color: #ffffff;
+	border: 1px solid #aae8ff;
+	width: 250px;
+	font-family: Arial;
+	font-size: 17px;
+	color: #5f5f5f;
+	padding: 5px;
+	
+}
+
+input.button_type01 {
+	background-color: #84ddff;
+	border: 2px solid #55d0ff;
+	width: 188px;
+	height: 40px;
+	font-family: malgun;
+	font-size: 20px;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 5px;
+}
+
+textarea.textarea_type01 {
+	background-color: #ffffff;
+	border: 1px solid #aae8ff;
+	width: 250px;
+	font-family: Arial;
+	font-size: 20px;
+	color: #2a2a2a;
+	padding: 5px;
+}
+
+td.content a:link {
+	text-decoration: none;
+	color: #5f5f5f;
+	
+}
+
+td.content a:visited {
+	text-decoration: none;
+	color: #5f5f5f;
+}
+
+td.content a:hover {
+	text-decoration: underline;
+	color: #2a2a2a;
+}
+
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.heekwon.home.dao.IDao">
+	
+	<insert id="joinOkDao">
+		INSERT INTO profile_member(mid,mpw,mname,memail) 
+		VALUES(#{param1},#{param2},#{param3},#{param4})
+	</insert>
+	
+	<select id="loginOkDao" resultType="String">
+		SELECT mpw FROM profile_member WHERE mid=#{param1}
+	</select>
+	
+	<select id="memberInfoDao" resultType="com.heekwon.home.dto.MemberDto">
+		SELECT * FROM profile_member WHERE mid=#{param1}
+	</select>
+	
+	<update id="modifyOkDao">
+		UPDATE profile_member SET mpw=#{param1}, mname=#{param2}, memail=#{param3} WHERE mid=#{param4}
+	</update>
+	
+	
+	
+	
+	<insert id="writeQuestionDao">
+		INSERT INTO profile_board(qnum,qid,qname,qcontent,qemail) 
+		VALUES(profile_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4})
+	</insert>
+	
+	<select id="listDao" resultType="com.heekwon.home.dto.QBoardDto">
+		SELECT * FROM profile_board ORDER BY qnum DESC
+	</select>
+	
+</mapper>
+	
+	
