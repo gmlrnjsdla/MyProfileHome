@@ -44,15 +44,15 @@
 										<td>${list.qnum}</td>
 										<td>${list.qid}</td>
 										<c:choose>
-											<c:when test="${list.qcontent.length() >20 }">
-												<td align="left"><a href="contentView?qnum=${list.qnum}">${list.qcontent.substring(0,19)}...</a></td>
+											<c:when test="${list.qcontent.length() >28 }">
+												<td align="left"><a href="contentView?qnum=${list.qnum}">${list.qcontent.substring(0,27)}...</a></td>
 											</c:when>
 											<c:otherwise>
 												<td align="left"><a href="contentView?qnum=${list.qnum}">${list.qcontent}</a></td>										
 											</c:otherwise>
 										</c:choose>
 										<td>${list.qname}</td>
-										<td>${list.qdate}</td>
+										<td>${list.qdate.substring(0,10)}</td>
 									</tr>
 									</c:forEach>
 							</table>

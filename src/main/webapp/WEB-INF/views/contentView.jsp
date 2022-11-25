@@ -63,7 +63,7 @@
 										<%	
 											}else{
 										%>
-												<input class="button_type01" type="button" value="질문수정" onclick="questionCheck()">&nbsp;&nbsp;
+											<input class="button_type01" type="button" value="질문수정" onclick="questionCheck()">&nbsp;&nbsp;
 											<input class="button_type01" type="button" value="글목록" onclick="script:window.location='list'">
 										<%
 											}
