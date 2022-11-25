@@ -65,16 +65,17 @@
 										%>
 											<input class="button_type01" type="button" value="질문수정" onclick="questionCheck()">&nbsp;&nbsp;
 											<input class="button_type01" type="button" value="글목록" onclick="script:window.location='list'">
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<div class="delete"><a href="questionDelete?qnum=${content.qnum}" onclick="return confirm('삭제하면 다시 복구할 수 없습니다.\n정말 삭제하시겠습니까?')">QUESTION DELETE</a></div>
+											</td>
+										</tr>
 										<%
 											}
 										%>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2">
-											<div class="delete"><a href="questionDelete?qnum=${content.qnum}" onclick="return confirm('삭제하면 다시 복구할 수 없습니다.\n정말 삭제하시겠습니까?')">QUESTION DELETE</a></div>
-										</td>
-									</tr>
+										
 								</form>							
 							</table>
 							

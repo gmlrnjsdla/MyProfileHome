@@ -336,30 +336,45 @@ public class HomeController {
 		HttpSession session = request.getSession();
 		String sid = (String)session.getAttribute("sessionID");
 		
-		if(sid.equals(qid)) {
-			dao.questionDeleteDao(qnum);
+		if(sid==null) {
 			PrintWriter out;
 			try {
 				response.setContentType("text/html;charset=utf-8");
 				out = response.getWriter();
-				out.println("<script>alert('질문삭제 완료!!');window.location='list';</script>");
-				out.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}else {
-			PrintWriter out;
-			try {
-				response.setContentType("text/html;charset=utf-8");
-				out = response.getWriter();
-				out.println("<script>alert('본인글만 삭제할 수 있습니다!!');history.go(-1);</script>");
+				out.println("<script>alert('로그인 후 이용해주세요!!');window.location='list';</script>");
 				out.flush();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		else {
+			if(sid.equals(qid)) {
+				dao.questionDeleteDao(qnum);
+				PrintWriter out;
+				try {
+					response.setContentType("text/html;charset=utf-8");
+					out = response.getWriter();
+					out.println("<script>alert('질문삭제 완료!!');window.location='list';</script>");
+					out.flush();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else {
+				PrintWriter out;
+				try {
+					response.setContentType("text/html;charset=utf-8");
+					out = response.getWriter();
+					out.println("<script>alert('본인글만 삭제할 수 있습니다!!');history.go(-1);</script>");
+					out.flush();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		return "redirect:list";
 	}
 
