@@ -68,7 +68,7 @@ public class HomeController {
 			try {
 				response.setContentType("text/html;charset=utf-8");
 				out = response.getWriter();
-				out.println("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다. 다시확인해주세요!');history.go(-1);</script>");
+				out.println("<script>alert('아이디가 일치하지 않습니다. 다시확인해주세요!');history.go(-1);</script>");
 				out.flush();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -80,7 +80,7 @@ public class HomeController {
 				try {
 					response.setContentType("text/html;charset=utf-8");
 					out = response.getWriter();
-					out.println("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다. 다시확인해주세요!');history.go(-1);</script>");
+					out.println("<script>alert('비밀번호가 일치하지 않습니다. 다시확인해주세요!');history.go(-1);</script>");
 					out.flush();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -90,7 +90,12 @@ public class HomeController {
 				HttpSession session = request.getSession();
 				session.setAttribute("sessionID", mid);
 				
-				return "redirect:index";
+				String sid = (String)session.getAttribute("sessionID");
+				MemberDto dto = dao.memberInfoDao(sid);
+				String mname = dto.getMname();
+				model.addAttribute("mname", mname);
+				
+				return "loginOk";
 			}
 		}
 		
@@ -250,11 +255,114 @@ public class HomeController {
 		return "list";
 	}
 	
+	@RequestMapping(value = "contentView")
+	public String contentView(HttpServletRequest request, Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		String qnum = request.getParameter("qnum");
+		QBoardDto dto = dao.contentViewDao(qnum);
+		
+		model.addAttribute("content", dto);
+		
+		return "contentView";
+	}
 	
 	
+	@RequestMapping(value = "questionModifyOk")
+	public String questionModifyOk(HttpServletRequest request, Model model, HttpServletResponse response) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		HttpSession session = request.getSession();
+		String sid = (String)session.getAttribute("sessionID");
+		String qid = request.getParameter("qid");
+		String qnum = request.getParameter("qnum");
+		String qcontent = request.getParameter("qcontent");
+		String qemail = request.getParameter("qemail");
+		
+		
+		if(sid==null) {
+			PrintWriter out;
+			try {
+				response.setContentType("text/html;charset=utf-8");
+				out = response.getWriter();
+				out.println("<script>alert('로그인 후 이용해주세요!!');hitory.go(-1);</script>");
+				out.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else {
+			if(sid.equals(qid)) {
+				dao.questionModifyOkDao(qcontent, qemail, qnum);
+				PrintWriter out;
+				try {
+					response.setContentType("text/html;charset=utf-8");
+					out = response.getWriter();
+					out.println("<script>alert('질문수정 성공!!');window.location='list';</script>");
+					out.flush();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else {
+				PrintWriter out;
+				try {
+					response.setContentType("text/html;charset=utf-8");
+					out = response.getWriter();
+					out.println("<script>alert('본인 글만 수정할 수 있습니다!!');history.go(-1);</script>");
+					out.flush();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return "redirect:list";
+	}
 	
-	
-	
+	@RequestMapping(value = "questionDelete")
+	public String questionDelete(HttpServletRequest request, Model model, HttpServletResponse response) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		String qnum = request.getParameter("qnum");
+		
+		QBoardDto dto = dao.contentViewDao(qnum);
+		String qid = dto.getQid();
+		
+		HttpSession session = request.getSession();
+		String sid = (String)session.getAttribute("sessionID");
+		
+		if(sid.equals(qid)) {
+			dao.questionDeleteDao(qnum);
+			PrintWriter out;
+			try {
+				response.setContentType("text/html;charset=utf-8");
+				out = response.getWriter();
+				out.println("<script>alert('질문삭제 완료!!');window.location='list';</script>");
+				out.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			PrintWriter out;
+			try {
+				response.setContentType("text/html;charset=utf-8");
+				out = response.getWriter();
+				out.println("<script>alert('본인글만 삭제할 수 있습니다!!');history.go(-1);</script>");
+				out.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return "redirect:list";
+	}
+
 	
 	
 	

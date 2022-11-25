@@ -41,11 +41,11 @@
 									</tr>
 									<c:forEach items="${list}" var="list">
 									<tr class="listbox02">
-										<td><span class="">${list.qnum}</span></td>
-										<td><span class="">${list.qid}</span></td>
-										<td align="left"><span class="">${list.qcontent}</span></td>
-										<td><span class="">${list.qname}</span></td>
-										<td><span class="">${list.qdate}</span></td>
+										<td>${list.qnum}</td>
+										<td>${list.qid}</td>
+										<td align="left"><a href="contentView?qnum=${list.qnum}">${list.qcontent}</a></td>
+										<td>${list.qname}</td>
+										<td>${list.qdate}</td>
 									</tr>
 									</c:forEach>
 							</table>

@@ -16,4 +16,7 @@ public interface IDao {
 	
 	public int writeQuestionDao(String qid, String qname, String qcontent, String qemail);
 	public ArrayList<QBoardDto> listDao();
+	public QBoardDto contentViewDao(String qnum);
+	public void questionModifyOkDao(String qcontent, String qemail, String qnum);
+	public void questionDeleteDao(String qnum);
 }

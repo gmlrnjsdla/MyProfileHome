@@ -35,6 +35,18 @@
 		SELECT * FROM profile_board ORDER BY qnum DESC
 	</select>
 	
+	<select id="contentViewDao" resultType="com.heekwon.home.dto.QBoardDto">
+		SELECT * FROM profile_board WHERE qnum=#{param1}
+	</select>
+	
+	<update id="questionModifyOkDao">
+		UPDATE profile_board SET qcontent=#{param1}, qemail=#{param2} WHERE qnum=#{param3} 
+	</update>
+	
+	<delete id="questionDeleteDao">
+		DELETE FROM profile_board WHERE qnum=#{param1}
+	</delete>
+	
 </mapper>
 	
 	

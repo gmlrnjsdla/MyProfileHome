@@ -21,20 +21,32 @@ tr.listbox02 td{
 
 tr.listbox02{
 	text-align: center;
+	font-family: malgun;
+	font-size: 17px;
+	font-weight: bold;
+	color: #6c6c6c;
 }
 
 input.button_type02 {
 	background-color: #84ddff;
-	border: 2px solid #ffffff;
+	border: 2px solid #55d0ff;
 	width: 188px;
 	height: 40px;
 	font-family: malgun;
 	font-size: 20px;
-	color: #ffffff;
+	color: #256D85;
 	font-weight: bold;
 	padding: 5px;
 	float: right;
 	margin-right:113px;
 	margin-top:10px;
+	cursor:pointer;
 }
+
+input.button_type02:hover{
+	background-color: #00a5e3;
+	color: #ffffff;
+}
+
+
 
