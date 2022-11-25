@@ -47,17 +47,7 @@
 									</tr>									
 									<tr>
 										<td><span class="content_text01">E-MAIL</span></td>
-										<%
-											if(sid == null){
-										%>
-												<td><input class="input_type01" type="text" name="qemail" value="${content.qemail}"></td>
-										<%
-											}else{
-										%>
-												<td><input class="input_type01" type="text" name="qemail" value="${content.qemail}"></td>
-										<%
-											}
-										%>
+										<td><input class="input_type01" type="text" name="qemail" value="${content.qemail}" readonly="readonly"></td>
 									</tr>
 									<tr>
 										<td><span class="content_text01">DATE</span></td>

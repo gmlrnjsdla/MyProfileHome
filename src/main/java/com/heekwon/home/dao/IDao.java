@@ -1,6 +1,6 @@
 package com.heekwon.home.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.heekwon.home.dto.MemberDto;
 import com.heekwon.home.dto.QBoardDto;
@@ -15,7 +15,7 @@ public interface IDao {
 	
 	
 	public int writeQuestionDao(String qid, String qname, String qcontent, String qemail);
-	public ArrayList<QBoardDto> listDao();
+	public List<QBoardDto> listDao();
 	public QBoardDto contentViewDao(String qnum);
 	public void questionModifyOkDao(String qcontent, String qemail, String qnum);
 	public void questionDeleteDao(String qnum);

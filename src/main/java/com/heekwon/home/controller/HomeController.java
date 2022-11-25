@@ -2,7 +2,7 @@ package com.heekwon.home.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -248,7 +248,7 @@ public class HomeController {
 	public String list(HttpServletRequest request, Model model) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
-		ArrayList<QBoardDto> dtos = dao.listDao();
+		List<QBoardDto> dtos = dao.listDao();
 		
 		model.addAttribute("list", dtos);
 		
