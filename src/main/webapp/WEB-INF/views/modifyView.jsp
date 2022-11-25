@@ -31,7 +31,7 @@
 						<td class="content">
 							<center>						
 							<table border="0" cellspacing="0" cellpadding="10">
-								
+								<form action="questionModifyOk" method="post" name="question_frm">
 									<input type="hidden" name="qnum" value="${content.qnum}">
 									<tr>
 										<td><span class="content_text01">MEMBER ID</span></td>
@@ -43,7 +43,7 @@
 									</tr>
 									<tr>
 										<td><span class="content_text01">QUESTION</span></td>
-										<td><textarea class="textarea_type01" rows="5" cols="30" name="qcontent" readonly="true">${content.qcontent}</textarea></td>
+										<td><textarea class="textarea_type01" rows="5" cols="30" name="qcontent" >${content.qcontent}</textarea></td>
 									</tr>									
 									<tr>
 										<td><span class="content_text01">E-MAIL</span></td>
@@ -63,7 +63,7 @@
 										<%	
 											}else{
 										%>
-											<input class="button_type01" type="button" value="질문수정" onclick="script:window.location='modifyView?qnum=${content.qnum}&qid=${content.qid}'">&nbsp;&nbsp;
+											<input class="button_type01" type="button" value="수정완료" onclick="questionCheck()">&nbsp;&nbsp;
 											<input class="button_type01" type="button" value="글목록" onclick="script:window.location='list'">
 											</td>
 										</tr>
@@ -75,6 +75,8 @@
 										<%
 											}
 										%>
+										
+								</form>							
 							</table>
 							
 							</center>							

@@ -273,13 +273,27 @@ public class HomeController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
-		HttpSession session = request.getSession();
-		String sid = (String)session.getAttribute("sessionID");
-		String qid = request.getParameter("qid");
+		
+		
 		String qnum = request.getParameter("qnum");
 		String qcontent = request.getParameter("qcontent");
 		String qemail = request.getParameter("qemail");
 		
+		dao.questionModifyOkDao(qcontent, qemail, qnum);
+		
+		
+		return "redirect:list";
+	}
+	
+	@RequestMapping(value = "modifyView")
+	public String ModifyOk(HttpServletRequest request, Model model, HttpServletResponse response) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		String qnum = request.getParameter("qnum");
+		QBoardDto dto = dao.contentViewDao(qnum);
+		HttpSession session = request.getSession();
+		String sid = (String)session.getAttribute("sessionID");
+		String qid = request.getParameter("qid");
 		
 		if(sid==null) {
 			PrintWriter out;
@@ -295,17 +309,9 @@ public class HomeController {
 		}
 		else {
 			if(sid.equals(qid)) {
-				dao.questionModifyOkDao(qcontent, qemail, qnum);
-				PrintWriter out;
-				try {
-					response.setContentType("text/html;charset=utf-8");
-					out = response.getWriter();
-					out.println("<script>alert('질문수정 성공!!');window.location='list';</script>");
-					out.flush();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				model.addAttribute("content", dto);
+
+				return "modifyView";
 			}
 			else {
 				PrintWriter out;
@@ -320,8 +326,8 @@ public class HomeController {
 				}
 			}
 		}
-		
-		return "redirect:list";
+
+		return "contentView";
 	}
 	
 	@RequestMapping(value = "questionDelete")
