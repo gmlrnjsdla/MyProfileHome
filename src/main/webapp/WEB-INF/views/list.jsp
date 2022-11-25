@@ -43,7 +43,14 @@
 									<tr class="listbox02">
 										<td>${list.qnum}</td>
 										<td>${list.qid}</td>
-										<td align="left"><a href="contentView?qnum=${list.qnum}">${list.qcontent}</a></td>
+										<c:choose>
+											<c:when test="${list.qcontent.length() >20 }">
+												<td align="left"><a href="contentView?qnum=${list.qnum}">${list.qcontent.substring(0,19)}...</a></td>
+											</c:when>
+											<c:otherwise>
+												<td align="left"><a href="contentView?qnum=${list.qnum}">${list.qcontent}</a></td>										
+											</c:otherwise>
+										</c:choose>
 										<td>${list.qname}</td>
 										<td>${list.qdate}</td>
 									</tr>
