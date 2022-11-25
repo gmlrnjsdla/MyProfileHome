@@ -30,7 +30,7 @@
 						<td class="content">
 							안녕하세요 Web Application 백엔드 개발자 임희권입니다.<br>
 							보시고 계신 페이지는 Spring Boot Framework으로 개발되었습니다.<br>
-							웹 어플리케이션 개발 관련하여 궁금하신 분은 dlagmlrnjs@gmail.com으로 연락주세요.						
+							웹 어플리케이션 개발 관련하여 궁금하신 분은 <a href="mailto:dlagmlrnjs@gmail.com"><u>dlagmlrnjs@gmail.com</u></a>으로 연락주세요.						
 						</td>						
 					</tr>
 					
