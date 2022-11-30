@@ -32,7 +32,11 @@
 	</insert>
 	
 	<select id="listDao" resultType="com.heekwon.home.dto.QBoardDto">
-		SELECT * FROM profile_board ORDER BY qnum DESC
+		SELECT * FROM 
+			(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+			FROM
+			(SELECT * FROM profile_board ORDER BY qnum DESC)A)
+		WHERE PAGE=#{pageNum}			 
 	</select>
 	
 	<select id="contentViewDao" resultType="com.heekwon.home.dto.QBoardDto">
@@ -46,6 +50,14 @@
 	<delete id="questionDeleteDao">
 		DELETE FROM profile_board WHERE qnum=#{param1}
 	</delete>
+	
+	
+	
+	
+	<select id="boardAllCount" resultType="int">
+		SELECT COUNT(*) FROM profile_board
+	</select>
+	
 	
 </mapper>
 	

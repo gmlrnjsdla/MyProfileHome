@@ -15,7 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.heekwon.home.dao.IDao;
+import com.heekwon.home.dto.Criteria;
 import com.heekwon.home.dto.MemberDto;
+import com.heekwon.home.dto.PageDto;
 import com.heekwon.home.dto.QBoardDto;
 
 @Controller
@@ -245,13 +247,28 @@ public class HomeController {
 	//====================================================================================================//
 	
 	@RequestMapping(value = "list")
-	public String list(HttpServletRequest request, Model model) {
+	public String list(HttpServletRequest request ,Model model, Criteria cri) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
-		List<QBoardDto> dtos = dao.listDao();
 		
+
+		
+		int totalRecord = dao.boardAllCount();
+		int pageNumInt = 1;
+		if(request.getParameter("pageNum") == null) {
+			pageNumInt = 1;
+		}else {
+			pageNumInt = Integer.parseInt(request.getParameter("pageNum"));
+		}
+		cri.setPageNum(pageNumInt);
+		
+		cri.setStartNum(cri.getPageNum()-1 * cri.getAmount());  // 해당 페이지의 시작번호를 설정.
+		PageDto dto = new PageDto(cri,totalRecord);
+		
+		List<QBoardDto> dtos = dao.listDao(cri);
 		model.addAttribute("list", dtos);
-		
+		model.addAttribute("pageMaker", dto);
+		model.addAttribute("pageNum", pageNumInt);
 		return "list";
 	}
 	
