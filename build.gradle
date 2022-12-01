@@ -2,10 +2,12 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.5'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'war'
 }
 
 group = 'com.heekwon'
 version = '0.0.1-SNAPSHOT'
+apply plugin:'war'
 sourceCompatibility = '11'
 
 configurations {
@@ -30,6 +32,11 @@ dependencies {
 	//JSP 의존 설정
 	implementation 'javax.servlet:jstl'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	
+	//오라클 DB 보안 설정
+	implementation 'com.oracle.database.security:oraclepki'
+    implementation 'com.oracle.database.security:osdt_core'
+    implementation 'com.oracle.database.security:osdt_cert'
 }
 
 tasks.named('test') {
